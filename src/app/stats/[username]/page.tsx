@@ -1,8 +1,9 @@
 // import { ContributionGraph } from "@/components/contribution-graph";
 import { StatsCard } from "@/components/stats-card";
 import { UserHeader } from "@/components/user-header";
-import { notFound } from "next/navigation";
+import Link  from "next/link";
 import Share from "./share";
+import { notFound } from "next/navigation";
 
 export const dynamicParams = true 
 
@@ -119,7 +120,12 @@ export default async function StatsPage({ params }: { params: Promise<{ username
             className="bg-green-500/70"
           />
         </div>
+        <div className="flex gap-4">
+          <Link href="/" className="text-lg text-white">
+            Back to Home
+          </Link>
           <Share username={username} />
+        </div>
       </div>
     </main>
   );
