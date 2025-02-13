@@ -51,12 +51,12 @@ async function getGitHubStats(username: string) {
   }
 }
 
-export default async function StatsPage({ params }: { params: { username: string } }) {
+export default async function StatsPage({ params }: { params: Promise<{ username: string }> }) {
   
 
   if (!params) return notFound();
 
-  const username = await params.username;
+  const username = (await params).username;
   console.log(username)
   const stats = await getGitHubStats(username);
   if (!stats) return notFound();

@@ -1,8 +1,6 @@
 "use client";
 import { useState } from "react";
 import { toast } from "sonner";
-import Link from "next/link";
-
 function Share({ username }: { username: string }) {
   const [copied, setCopied] = useState(false);
 
