@@ -1,11 +1,17 @@
-"use client"
-import { ContributionGraph } from "@/components/contribution-graph";
+// import { ContributionGraph } from "@/components/contribution-graph";
 import { StatsCard } from "@/components/stats-card";
 import { UserHeader } from "@/components/user-header";
-import { notFound, useParams } from "next/navigation";
+import { notFound } from "next/navigation";
+import Share from "./share";
+
+export const dynamicParams = true 
+
+export const revalidate = 60
 
 async function getGitHubStats(username: string) {
+  console.log(username)
   try {
+    console.log(process.env.NEXT_PUBLIC_GITHUB_ACCESS_TOKEN)
     const response = await fetch(`https://api.github.com/users/${username}`, {
       headers: {
         Authorization: `Bearer ${process.env.NEXT_PUBLIC_GITHUB_ACCESS_TOKEN}`,
@@ -25,6 +31,7 @@ async function getGitHubStats(username: string) {
       }
     );
     const reposData = await reposResponse.json();
+    console.log(reposData)
 
     return {
       avatar_url: userData.avatar_url,
@@ -44,12 +51,13 @@ async function getGitHubStats(username: string) {
   }
 }
 
-export default async function StatsPage() {
+export default async function StatsPage({ params }: { params: { username: string } }) {
+  
 
-  const params = useParams<{ username: string }>()
   if (!params) return notFound();
 
-  const username = params.username;
+  const username = await params.username;
+  console.log(username)
   const stats = await getGitHubStats(username);
   if (!stats) return notFound();
 
@@ -62,6 +70,18 @@ export default async function StatsPage() {
     "True Love": sortedLanguages[0]?.[0] || "Still Searching",
     "Current Flame": sortedLanguages[1]?.[0] || "Single",
     "Past Romance": sortedLanguages[2]?.[0] || "No History",
+  };
+
+
+  const handleShare = async () => {
+    try {
+      await navigator.clipboard.writeText(
+        `${window.location.origin}${`/stats/${username}`}`
+      );
+     
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   return (
@@ -99,6 +119,7 @@ export default async function StatsPage() {
             className="bg-green-500/70"
           />
         </div>
+          <Share username={username} />
       </div>
     </main>
   );
