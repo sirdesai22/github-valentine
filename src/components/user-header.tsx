@@ -9,7 +9,7 @@ interface UserHeaderProps {
 
 export function UserHeader({ username, avatarUrl, name }: UserHeaderProps) {
   return (
-    <Card className="border-zinc-800 bg-zinc-900">
+    <Card className="bg-gradient-to-b from-zinc-900 via-zinc-600 to-zinc-900 border-x-red-500 border-y-red-800 border-4">
       <CardContent className="flex items-center gap-4 py-4">
         <Avatar className="h-16 w-16">
           <AvatarImage src={avatarUrl} alt={username} />

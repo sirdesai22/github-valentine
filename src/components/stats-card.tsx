@@ -9,12 +9,12 @@ interface StatsCardProps {
 
 export function StatsCard({ title, value, description, className }: StatsCardProps) {
   return (
-    <Card className={`border-zinc-800 bg-zinc-900 ${className}`}>
+    <Card className={`${className} border-none shadow-lg shadow-black/40`}>
       <CardHeader className="pb-2">
         <CardTitle className="text-zinc-100 text-sm font-normal">{title}</CardTitle>
       </CardHeader>
       <CardContent>
-        <div className="md:text-2xl text-xl font-bold text-white">{value}</div>
+        <div className="md:text-2xl text-4xl font-bold text-white text-effect">{value}</div>
         <CardDescription className="text-zinc-200 mt-1">{description}</CardDescription>
       </CardContent>
     </Card>

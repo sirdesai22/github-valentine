@@ -70,3 +70,18 @@ body {
     @apply bg-background text-foreground;
   }
 }
+
+@font-face {
+  font-family: "kissing";
+  src: url("/kisssing.ttf");
+}
+@font-face {
+  font-family: "love";
+  src: url("/love_house.otf");
+}
+
+.text-effect {
+  text-shadow: 2px 2px black;
+  font-family: "kissing";
+  letter-spacing: 4px;
+}

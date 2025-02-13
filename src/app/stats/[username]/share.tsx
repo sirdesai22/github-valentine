@@ -20,7 +20,7 @@ function Share({ username }: { username: string }) {
 
   return (
     <button
-      className="w-full rounded-xl bg-white p-4 text-center text-lg text-black transition duration-150 ease-in-out hover:bg-gray-100"
+      className="w-full rounded-xl bg-white p-4 text-center text-lg text-black transition duration-150 ease-in-out hover:bg-gray-100 font-semibold"
       onClick={handleCopy}
     >
       {copied ? "Copied!" : "Share My Stats"}

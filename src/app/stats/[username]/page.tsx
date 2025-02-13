@@ -99,25 +99,25 @@ export default async function StatsPage({ params }: { params: Promise<{ username
             title="Code Relationships ❤️"
             value={relationships["True Love"]}
             description="Your True Love"
-            className="bg-pink-500/70"
+            className="bg-gradient-to-b from-pink-700 via-pink-400 to-pink-700"
           />
           <StatsCard
             title="Current Flame 🔥"
             value={relationships["Current Flame"]}
             description="Your Active Romance"
-            className="bg-purple-500/70"
+            className="bg-gradient-to-b from-purple-700 via-purple-400 to-purple-700"
           />
           <StatsCard
             title="Body Count 🥵"
             value={stats.public_repos.toString()}
             description="Your External Affairs"
-            className="bg-blue-500/70"
+            className="bg-gradient-to-b from-blue-700 via-blue-400 to-blue-700"
           />
           <StatsCard
             title="Forking Since 🥰"
             value={new Date(stats.created_at).getFullYear().toString()}
             description="Your Forking Journey Began"
-            className="bg-green-500/70"
+            className="bg-gradient-to-b from-green-700 via-green-400 to-green-700"
           />
         </div>
         <div className="flex gap-4">
@@ -126,6 +126,7 @@ export default async function StatsPage({ params }: { params: Promise<{ username
           </Link>
           <Share username={username} />
         </div>
+        <p className="text-xs text-center text-gray-200 mb-2">Built with ❤️ by <a href="https://www.maximalstudio.in/" target="_blank">Maximal Studio</a></p>
       </div>
     </main>
   );
